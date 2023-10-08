@@ -9,7 +9,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
   HomeCubit({
     required this.weatherService,
     HomeCubitState? initialState,
-  }) : super(HomeCubitInitial()) {
+  }) : super(HomeCubitLoaded()) {
     _onStarted();
   }
 
@@ -19,8 +19,13 @@ class HomeCubit extends Cubit<HomeCubitState> {
     emit(HomeCubitLoading());
     try {
       Current? current = await weatherService.fetchCurrentWeatherAsync();
-      
-      emit(HomeCubitLoaded(currentWeatherdata: current));
-    } catch (_) {}
+      if (current == null) {
+        emit(HomeCubitStateError()) {}
+      } else {
+        emit(HomeCubitLoaded(currentWeatherdata: current));
+      }
+    } catch (e) {
+      emit(HomeCubitStateError(e)) {}
+    }
   }
 }

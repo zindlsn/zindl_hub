@@ -4,6 +4,7 @@ import 'package:zindl_hub/services/weather_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   WeatherService weatherService = WeatherService();
 
   //print(await weatherService.fetchCurrentWeatherAsync());

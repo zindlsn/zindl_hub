@@ -7,6 +7,12 @@ final class HomeCubitInitial extends HomeCubitState {}
 
 final class HomeCubitLoading extends HomeCubitState {}
 
+final class HomeCubitError extends HomeCubitState {
+  final message;
+
+  HomeCubitError(this.message);
+}
+
 final class HomeCubitLoaded extends HomeCubitState {
   Current? currentWeatherdata;
 

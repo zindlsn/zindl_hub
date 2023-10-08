@@ -51,22 +51,33 @@ import 'package:zindl_hub/0_data/models/weather.dart';
 } */
 ///
 ///
+///
+///
+///https://firebase.google.com/docs/storage/web/download-files?hl=de
+///
+///
 class WeatherService {
   final String currentTemperatureBaseUrl =
       'http://api.weatherapi.com/v1/current.json?key=4dc3589a68974ee88bd222349232709&q=Stuttgart';
   final String apiV1BaseUrl = "http://api.weatherapi.com/v1";
   final String apiKey = "4dc3589a68974ee88bd222349232709";
   Future<Current?> fetchCurrentWeatherAsync() async {
-    final response =
-        await http.get(Uri.parse(currentTemperatureBaseUrl), headers: {
-      "ACCEPT": "application/json",
-      "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-    });
-    if (response.statusCode == 200) {
-      return Current.fromJson(json.decode(response.body));
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
+    try {
+      final response =
+          await http.get(Uri.parse(currentTemperatureBaseUrl), headers: {
+        "ACCEPT": "application/json",
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+      });
+      if (response.statusCode == 200) {
+        return Current(tempc: 10.5);
+        return Current.fromJson(json.decode(response.body));
+      } else {
+        return Current(tempc: 66.6);
+        // If the server did not return a 200 OK response,
+        // then throw an exception.
+        throw Exception('Failed to get data from API');
+      }
+    } catch (_) {
       throw Exception('Failed to get data from API');
     }
   }
