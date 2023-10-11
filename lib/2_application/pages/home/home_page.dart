@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zindl_hub/2_application/pages/home/bloc/cubit/home_cubit_cubit.dart';
+import 'package:zindl_hub/services/book_service.dart';
 import 'package:zindl_hub/services/weather_service.dart';
 
 class HomePageProvider extends StatelessWidget {
@@ -9,7 +10,8 @@ class HomePageProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(weatherService: WeatherService()),
+      create: (context) => HomeCubit(
+          weatherService: WeatherService(), bookService: BookService()),
       child: HomePage(),
     );
   }
@@ -27,26 +29,56 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: switch (state) {
                   HomeCubitInitial() => Container(),
-                  HomeCubitLoaded() => Container(
-                      width: 400,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blueAccent,
-                        ),
-                        color: Colors.blueAccent,
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                      ),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Stuttgart',
-                            style: TextStyle(color: Colors.white),
+                  HomeCubitLoaded() => Column(
+                      children: [
+                        Container(
+                          width: 400,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.blueAccent,
+                            ),
+                            color: Colors.blueAccent,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
                           ),
-                          Text('${state.currentWeatherdata!.tempc} ° C'),
-                        ],
-                      ),
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Stuttgart',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Text(
+                                  '${state.currentWeatherdata!..current!.tempc} ° C'),
+                            ],
+                          ),
+                        ),
+                        state.listOfBooks != null &&
+                                state.listOfBooks!.isNotEmpty
+                            ? Container(
+                                width: 400,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.blueAccent,
+                                  ),
+                                  color: Colors.blueAccent,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8)),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      state.latestBook!.title,
+                                      style:
+                                          const TextStyle(color: Colors.white),
+                                    ),
+                                    Image.network(state.latestBook!.coverUrl),
+                                  ],
+                                ),
+                              )
+                            : Container()
+                      ],
                     ),
-                  HomeCubitLoading() => Center(
+                  HomeCubitLoading() => const Center(
                       child: Column(
                         children: [
                           CircularProgressIndicator(),

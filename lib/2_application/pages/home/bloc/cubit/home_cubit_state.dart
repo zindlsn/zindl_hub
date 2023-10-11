@@ -14,9 +14,13 @@ final class HomeCubitError extends HomeCubitState {
 }
 
 final class HomeCubitLoaded extends HomeCubitState {
-  Current? currentWeatherdata;
+  Root? currentWeatherdata;
+  List<Book>? listOfBooks;
+  Book? latestBook;
 
-  HomeCubitLoaded({this.currentWeatherdata});
+  HomeCubitLoaded({this.currentWeatherdata, this.listOfBooks}) {
+    latestBook = listOfBooks != null ? listOfBooks!.first : null;
+  }
 }
 
 
