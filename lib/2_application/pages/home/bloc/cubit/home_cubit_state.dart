@@ -1,6 +1,5 @@
 part of 'home_cubit_cubit.dart';
 
-@immutable
 sealed class HomeCubitState {}
 
 final class HomeCubitInitial extends HomeCubitState {}
@@ -8,14 +7,14 @@ final class HomeCubitInitial extends HomeCubitState {}
 final class HomeCubitLoading extends HomeCubitState {}
 
 final class HomeCubitError extends HomeCubitState {
-  final message;
+  String message;
 
   HomeCubitError(this.message);
 }
 
 final class HomeCubitLoaded extends HomeCubitState {
-  Root? currentWeatherdata;
-  List<Book>? listOfBooks;
+  final Weather? currentWeatherdata;
+  final List<Book>? listOfBooks;
   Book? latestBook;
 
   HomeCubitLoaded({this.currentWeatherdata, this.listOfBooks}) {

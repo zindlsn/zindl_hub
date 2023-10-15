@@ -1,9 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:zindl_hub/0_data/models/weather.dart';
 import 'package:zindl_hub/0_data/models/weather.dart';
 
 ///
@@ -60,28 +58,27 @@ import 'package:zindl_hub/0_data/models/weather.dart';
 ///
 ///
 class WeatherService {
-  final String currentTemperatureBaseUrl =
+  final String _currentTemperatureBaseUrl =
       'http://api.weatherapi.com/v1/current.json?key=4dc3589a68974ee88bd222349232709&q=Stuttgart';
-  final String apiV1BaseUrl = "http://api.weatherapi.com/v1";
-  final String apiKey = "4dc3589a68974ee88bd222349232709";
-  Future<Root?> fetchCurrentWeatherAsync() async {
+
+  Future<Weather?> fetchWeatherAsync(http.BaseClient client) async {
+    return Future.value(null);
+  }
+
+  Future<Weather?> fetchCurrentWeatherAsync() async {
     Position position = await _determinePosition();
 
     try {
       final response =
-          await http.get(Uri.parse(currentTemperatureBaseUrl), headers: {
+          await http.get(Uri.parse(_currentTemperatureBaseUrl), headers: {
         "ACCEPT": "application/json",
         "Access-Control-Allow-Origin": "*", // Required for CORS support to work
       });
       if (response.statusCode == 200) {
-        List<Address> addresses = await Geocoder.local
-            .findAddressesFromCoordinates(
-                Coordinates(position.latitude, position.longitude));
-
         Location location =
             Location(lat: position.latitude, lon: position.longitude);
 
-        return Root(
+        return Weather(
             current: Current.fromJson(json.decode(response.body)),
             location: location);
       } else {

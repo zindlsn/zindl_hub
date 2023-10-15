@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zindl_hub/0_data/models/book.dart';
 import 'package:zindl_hub/0_data/models/weather.dart';
@@ -12,25 +11,22 @@ class HomeCubit extends Cubit<HomeCubitState> {
     required this.weatherService,
     required this.bookService,
     HomeCubitState? initialState,
-  }) : super(HomeCubitLoaded()) {
-    _onStarted();
-  }
+  }) : super(HomeCubitLoaded());
 
   WeatherService weatherService;
   BookService bookService;
 
-  Future<void> _onStarted() async {
+  Future<void> onStartedAsync() async {
     emit(HomeCubitLoading());
     try {
-      Root? current = await weatherService.fetchCurrentWeatherAsync();
-      List<Book> books = bookService.books;
+      Weather? current = await weatherService.fetchCurrentWeatherAsync();
       if (current == null) {
-        emit(HomeCubitStateError()) {}
+        emit(HomeCubitError("Could not loaded"));
       } else {
-        emit(HomeCubitLoaded(currentWeatherdata: current, listOfBooks: books));
+        emit(HomeCubitLoaded(currentWeatherdata: current));
       }
     } catch (e) {
-      emit(HomeCubitStateError(e)) {}
+      emit(HomeCubitError(""));
     }
   }
 }
