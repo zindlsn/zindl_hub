@@ -1,8 +1,3 @@
-/* 
-// Example Usage
-Map<String, dynamic> map = jsonDecode(<myJSONString>);
-var myWeatherNode = Weather.fromJson(map);
-*/
 import 'package:equatable/equatable.dart';
 
 class Condition {

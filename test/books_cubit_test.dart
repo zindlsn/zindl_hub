@@ -1,19 +1,19 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zindl_hub/0_data/models/book.dart';
-import 'package:zindl_hub/2_application/pages/home/cubit/books_cubit.dart';
-import 'package:zindl_hub/services/book_service.dart';
-import 'package:zindl_hub/services/weather_service.dart';
+import 'package:zindl_hub/1_domain/repositories/book_repository.dart';
+import 'package:zindl_hub/1_domain/repositories/weather_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:zindl_hub/2_application/widgets/books/books_cubit.dart';
 
 ///
 ///
 /// https://resocoder.com/2019/11/29/bloc-test-tutorial-easier-way-to-test-blocs-in-dart-flutter/
 ///
 
-class MocWeatherService extends Mock implements WeatherService {}
+class MocWeatherService extends Mock implements WeatherRepository {}
 
-class MockBookService extends MockCubit<Book> implements BookService {}
+class MockBookService extends MockCubit<Book> implements BookRepository {}
 
 late MockBookService mockBookService;
 void main() {
