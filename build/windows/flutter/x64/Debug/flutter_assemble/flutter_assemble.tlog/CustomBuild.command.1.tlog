@@ -1,0 +1,28 @@
+^C:\REPOS\ZINDL_HUB\BUILD\WINDOWS\CMAKEFILES\BD95A1321626AFB1D1BBC6469363CF54\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\stefan.zindl\Documents\flutter_windows_3.13.6-stable\flutter PROJECT_DIR=C:\repos\zindl_hub FLUTTER_ROOT=C:\Users\stefan.zindl\Documents\flutter_windows_3.13.6-stable\flutter FLUTTER_EPHEMERAL_DIR=C:\repos\zindl_hub\windows\flutter\ephemeral PROJECT_DIR=C:\repos\zindl_hub FLUTTER_TARGET=C:\repos\zindl_hub\lib\main.dart DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==,RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC9hNzk0Y2YyNjgxYzZjOWZlN2IyNjBlMGU4NGRlOTYyOThkYzljMThiLw== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\repos\zindl_hub\.dart_tool\package_config.json C:/Users/stefan.zindl/Documents/flutter_windows_3.13.6-stable/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\REPOS\ZINDL_HUB\BUILD\WINDOWS\CMAKEFILES\CA537AA46B80F0DBDE697A16A199F272\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\REPOS\ZINDL_HUB\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/repos/zindl_hub/windows -BC:/repos/zindl_hub/build/windows --check-stamp-file C:/repos/zindl_hub/build/windows/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

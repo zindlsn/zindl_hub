@@ -1,0 +1,11 @@
+C:/repos/zindl_hub/build/windows/runner/Debug/data/icudtl.dat
+C:/repos/zindl_hub/build/windows/runner/Debug/flutter_windows.dll
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/AssetManifest.bin
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/NOTICES
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+C:/repos/zindl_hub/build/windows/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag

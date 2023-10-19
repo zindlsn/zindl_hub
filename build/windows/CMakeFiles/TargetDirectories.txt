@@ -1,0 +1,10 @@
+C:/repos/zindl_hub/build/windows/CMakeFiles/INSTALL.dir
+C:/repos/zindl_hub/build/windows/CMakeFiles/ALL_BUILD.dir
+C:/repos/zindl_hub/build/windows/CMakeFiles/ZERO_CHECK.dir
+C:/repos/zindl_hub/build/windows/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/repos/zindl_hub/build/windows/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/repos/zindl_hub/build/windows/flutter/CMakeFiles/flutter_assemble.dir
+C:/repos/zindl_hub/build/windows/flutter/CMakeFiles/INSTALL.dir
+C:/repos/zindl_hub/build/windows/runner/CMakeFiles/zindl_hub.dir
+C:/repos/zindl_hub/build/windows/runner/CMakeFiles/INSTALL.dir
+C:/repos/zindl_hub/build/windows/runner/CMakeFiles/ALL_BUILD.dir
