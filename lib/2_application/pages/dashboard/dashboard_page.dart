@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:zindl_hub/1_domain/repositories/appinfo_service.dart';
 import 'package:zindl_hub/2_application/pages/dashboard/bloc/dashboard_cubit.dart';
 import 'package:zindl_hub/2_application/widgets/books/books_cubit.dart';
 import 'package:zindl_hub/2_application/widgets/books/books_widget.dart';
 import 'package:zindl_hub/2_application/widgets/timeview_widget.dart';
-import 'package:zindl_hub/1_domain/repositories/book_repository.dart';
-import 'package:zindl_hub/1_domain/repositories/weather_repository.dart';
+import 'package:zindl_hub/main.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -13,9 +14,46 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const WelcomeText(),
+      ),
+      drawer: Container(
+        color: Colors.white,
+        width: 300,
+        child: Column(
+          children: [
+            ListView(
+              shrinkWrap: true,
+              children: [
+                ListTile(
+                  title: const Text('Settings'),
+                  leading: const Icon(Icons.settings),
+                  onTap: () {},
+                ),
+              ],
+            ),
+            const Spacer(),
+            const Divider(
+              color: Colors.grey,
+            ),
+            ListTile(
+              title: Row(
+                children: [
+                  const Text('About'),
+                  const Spacer(),
+                  Consumer<AppInfoService>(
+                      builder: (context, appInfoService, child) {
+                    return Text("v${appInfoService.appVersion}");
+                  }),
+                ],
+              ),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
-          const WelcomeText(),
           SingleChildScrollView(
             child: Column(
               children: [
@@ -97,12 +135,9 @@ class DashboardPageProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<DashboardCubit>(
-            create: (context) => DashboardCubit(
-                  weatherService: WeatherRepository(),
-                )..onStartedAsync()),
+            create: (context) => getIt<DashboardCubit>()..onStartedAsync()),
         BlocProvider<BooksCubit>(
-          create: (context) =>
-              BooksCubit(bookService: BookRepository())..onStartedAsync(),
+          create: (context) => getIt<BooksCubit>()..onStartedAsync(),
         ),
       ],
       child: const DashboardPage(),

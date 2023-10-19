@@ -18,6 +18,7 @@ class DashboardCubit extends Cubit<HomeCubitState> {
 
   Future<void> onStartedAsync() async {
     emit(HomeCubitLoading());
+
     try {
       Weather? current = await weatherService.fetchCurrentWeatherAsync();
       if (current == null) {
