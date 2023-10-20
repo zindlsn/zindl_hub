@@ -6,7 +6,7 @@ import 'package:zindl_hub/2_application/pages/dashboard/bloc/dashboard_cubit.dar
 import 'package:zindl_hub/2_application/widgets/books/books_cubit.dart';
 import 'package:zindl_hub/2_application/widgets/books/books_widget.dart';
 import 'package:zindl_hub/2_application/widgets/timeview_widget.dart';
-import 'package:zindl_hub/main.dart';
+import 'package:zindl_hub/core/registry.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
